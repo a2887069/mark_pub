@@ -1,0 +1,2 @@
+pytesseract==0.3.13
+selenium==4.33.0
