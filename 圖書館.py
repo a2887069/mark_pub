@@ -7,14 +7,14 @@ Original file is located at
     https://colab.research.google.com/drive/1DvfXNa48x3H9gO3WLjrvd_bhxcOkxT4b
 """
 
-!pip install selenium
-!apt-get update # 更新套件列表 (通常需要)
-!apt-get install -y chromium-chromedriver # 安裝 ChromeDriver
-!cp /usr/lib/chromium-browser/chromedriver /usr/bin # 將 chromedriver 放到 PATH
+#!pip install selenium
+#!apt-get update # 更新套件列表 (通常需要)
+#!apt-get install -y chromium-chromedriver # 安裝 ChromeDriver
+#!cp /usr/lib/chromium-browser/chromedriver /usr/bin # 將 chromedriver 放到 PATH
 
-!sudo apt install tesseract-ocr # 安裝 Tesseract OCR 引擎
-!pip install pytesseract       # 安裝 Tesseract 的 Python 封裝
-!pip install Pillow            # Pillow 用於圖片處理
+#!sudo apt install tesseract-ocr # 安裝 Tesseract OCR 引擎
+#!pip install pytesseract       # 安裝 Tesseract 的 Python 封裝
+#!pip install Pillow            # Pillow 用於圖片處理
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
