@@ -1,0 +1,39 @@
+name: Run Library Bot Daily
+
+on:
+  schedule:
+    # 每天 UTC 時間的 21:00 執行 (對應台灣時間早上 5:00)
+    # Cron 語法：分鐘 小時 日 月 星期
+    # UTC 21:00 = CST (Asia/Taipei, UTC+8) 05:00 AM
+    - cron: '0 21 * * *'
+  workflow_dispatch: # 允許手動觸發 (方便測試)
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest # 使用 Linux 環境
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4 # 使用最新版的 checkout action
+
+    - name: Set up Python
+      uses: actions/setup-python@v4 # 使用最新版的 setup-python action
+      with:
+        python-version: '3.9' # 或者 '3.x' 或你 Colab 使用的 Python 版本
+
+    - name: Install Tesseract OCR and Chromium/ChromeDriver
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tesseract-ocr chromium-chromedriver
+        # 下面這行通常是需要的，確保 chromedriver 在 PATH 中
+        sudo ln -s -f /usr/lib/chromium-browser/chromedriver /usr/local/bin/chromedriver
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run Python script
+      env:
+        LIBRARY_CARD_NUMBER: ${{ secrets.LIBRARY_CARD_NUMBER }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+      run: python 圖書館.py # <--- 確認這是你的 Python 腳本檔名
