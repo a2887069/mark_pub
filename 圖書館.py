@@ -36,8 +36,8 @@ driver.quit()
 #--------------------------------------------------
 # 步驟 0: (如果還沒執行過) 安裝 OCR 相關套件
 #--------------------------------------------------
-!sudo apt install tesseract-ocr -y > /dev/null 2>&1 # 安裝 Tesseract OCR 引擎 (靜默安裝)
-!pip install pytesseract > /dev/null 2>&1          # 安裝 Tesseract 的 Python 封裝 (靜默安裝)
+#!sudo apt install tesseract-ocr -y > /dev/null 2>&1 # 安裝 Tesseract OCR 引擎 (靜默安裝)
+#!pip install pytesseract > /dev/null 2>&1          # 安裝 Tesseract 的 Python 封裝 (靜默安裝)
 # Pillow 應該 Selenium 會安裝，如果沒有可以取消註解下一行
 # !pip install Pillow > /dev/null 2>&1
 print("--- OCR 套件檢查/安裝完畢 ---")
@@ -46,8 +46,8 @@ print("--- OCR 套件檢查/安裝完畢 ---")
 # 步驟 1: (如果還沒執行過) 安裝並設定 ChromeDriver (通常每個 Colab Session 執行一次)
 # Selenium 應該已經安裝了，這裡主要是確保 ChromeDriver 可用
 #--------------------------------------------------
-!apt-get update # 更新套件列表
-!apt-get install -y chromium-chromedriver # 安裝 chromium-chromedriver
+#!apt-get update # 更新套件列表
+#!apt-get install -y chromium-chromedriver # 安裝 chromium-chromedriver
 print("--- ChromeDriver 設定檢查完畢 ---")
 
 #--------------------------------------------------
